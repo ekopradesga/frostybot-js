@@ -14,7 +14,7 @@ loader.load_all()
 
 var apiRouter = require('./routes/routes.api');
 var guiRouter = require('./routes/routes.gui');
-
+var teleRouter= require('./routes/routes.tele');
 // Load Express
 
 var app = express();
@@ -88,6 +88,7 @@ app.use(express.static('views/assets'))
 app.use('/rest', apiRouter);      // REST API
 app.use('/frostybot', apiRouter); // WebSocket API
 app.use('/ui', guiRouter);        // GUI
+app.use('/v1', teleRouter);        // REST API Telegram
 
 // Redirect to the GUI
 app.all('/', async function(req, res) {
