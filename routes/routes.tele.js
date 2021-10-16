@@ -4,8 +4,7 @@ var api = require('../core/core.tele')
 
 // Create routes
 
-var app = express();
-app.get('/v1', function (req, res) {
+router.get('/v1', async function(req, res, next) {
     res.send('hello world');
 });
 
