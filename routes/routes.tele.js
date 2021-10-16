@@ -12,6 +12,6 @@ router.get('/', function(req, res, next) {
 router.post('/v3', function(req, res, next) {
     // res.send('hello world');
     // res.send(req.rawBody);
-    bot.send(-1001465663561, req.rawBody);
+    bot.sendMessage(-1001465663561, req.rawBody);
 });
 module.exports = router;
