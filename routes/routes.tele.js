@@ -1,26 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-function rawBody(req, res, next) {
-    req.setEncoding('utf8');
-    req.rawBody = '';
-    req.on('data', function(chunk) {
-        req.rawBody += chunk;
-    });
-    req.on('end', function(){
-        next();
-    });
-}
-
-router.use(rawBody);
+const TelegramBot = require('node-telegram-bot-api');
+const bot = new TelegramBot('765810037:AAEWqncmLEjYjjHZbhZ-s0wsN15lmTcdj2E');
 
 // Create routes
 router.get('/', function(req, res, next) {
     res.send('hello world');
 });
 
-router.post('/', function(req, res, next) {
+router.post('/v3', function(req, res, next) {
     // res.send('hello world');
-    res.send(req.rawBody);
+    // res.send(req.rawBody);
+    bot.send(-1001465663561, req.rawBody);
 });
 module.exports = router;
