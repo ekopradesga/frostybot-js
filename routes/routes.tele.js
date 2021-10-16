@@ -12,7 +12,7 @@ function rawBody(req, res, next) {
     });
 }
 
-router.use(rawBody());
+router.use(rawBody);
 
 // Create routes
 router.get('/', function(req, res, next) {
