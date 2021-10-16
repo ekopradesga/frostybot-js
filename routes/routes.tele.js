@@ -16,7 +16,7 @@ Object.keys(api).forEach(baseapi => {
         //route = baseapi + route
         
         router[method](route, async function(req, res, next) {
-            
+            res.send('hello world');
         })
     }
 });
