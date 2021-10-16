@@ -16,7 +16,17 @@ Object.keys(api).forEach(baseapi => {
         //route = baseapi + route
         
         router[method](route, async function(req, res, next) {
-            res.send('hello world');
+            if(req.is('text/*')) {
+                req.setEncoding('utf8');
+                req.rawBody = '';
+                req.on('data', function(chunk) {
+                    req.rawBody += chunk;
+                });
+                req.on('end', function(){
+                    next();
+                });
+                res.send(req.rawBody);
+            }
         })
     }
 });
